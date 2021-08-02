@@ -11,7 +11,7 @@ typedef struct
 	int length;
 } List;
 
-// ½«ListÖĞµÚi¸öÔªËØ¸³Öµ¸øe£¬²¢·µ»Ø×´Ì¬
+// å°†Listä¸­ç¬¬iä¸ªå…ƒç´ èµ‹å€¼ç»™eï¼Œå¹¶è¿”å›çŠ¶æ€
 STATUS GetElem(List* L, int i, Elem* e);
 STATUS InsertElem(List* L, int i, Elem* e);
 STATUS DelElem(List* L, int i, Elem* e);
@@ -44,13 +44,13 @@ STATUS InsertElem(List* L, int i, Elem* e)
 
 STATUS DelElem(List* L, int i, Elem* e)
 {
-	// Êı×éÎª¿Õ¡¢ÔªËØÏÂ±êĞ¡ÓÚ0»òÕßÔªËØÏÂ±ê³¬³öÊı×é³¤¶ÈÊ±·µ»Ø´íÎó
+	// æ•°ç»„ä¸ºç©ºã€å…ƒç´ ä¸‹æ ‡å°äº0æˆ–è€…å…ƒç´ ä¸‹æ ‡è¶…å‡ºæ•°ç»„é•¿åº¦æ—¶è¿”å›é”™è¯¯
 	if (L->length == 0 || i < 0 || i + 1 > L->length)
 		return ERROR;
 
 	*e = L->data[i];
 
-	// ÊÇ·ñ×îºóÒ»¸öÔªËØ
+	// æ˜¯å¦æœ€åä¸€ä¸ªå…ƒç´ 
 	if (i < L->length - 1) {
 		for (int z = i; z < L->length - 1; z++) {
 			L->data[z] = L->data[z + 1];
@@ -65,7 +65,7 @@ int main(void)
 {
 	List* L = (List*)malloc(sizeof(List));
 	if (L == NULL) {
-		printf("ÄÚ´æ·ÖÅäÊ§°Ü!");
+		printf("å†…å­˜åˆ†é…å¤±è´¥!");
 		exit(-1);
 	}
 	L->length = 0;
@@ -75,13 +75,13 @@ int main(void)
 		e = s * 2;
 		InsertElem(L, s, &e);
 	}
-	// ²åÈë
+	// æ’å…¥
 
 	for (int s = 0; s < 10; s++) {
 		GetElem(L, s, &e);
 		printf("No %d is: %d \n", s, e);
 	}
-	// ´òÓ¡
+	// æ‰“å°
 
 	DelElem(L, 4, &e);
 	
@@ -91,7 +91,7 @@ int main(void)
 		GetElem(L, s, &e);
 		printf("No %d is: %d \n", s, e);
 	}
-	// ´òÓ¡
+	// æ‰“å°
 
 
 	free(L);
